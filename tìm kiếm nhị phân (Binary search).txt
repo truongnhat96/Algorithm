@@ -1,0 +1,26 @@
+<algorthim>
+bool binary_search(int p[],int n,int m){
+    int l=0,r=n-1;
+  while(l<r){
+
+//tạo chỉ số ở giữa mảng  
+    int x=(l+r)/2;
+
+   if(m==p[x])
+     return true;
+
+// giá trị tìm kiếm lớn hơn gt ở giữa mảng :  
+    else if(m>p[x])
+    l=x+1;
+
+// giá trị tìm kiếm nhỏ hơn gt ở giữa mảng :
+    else r=x-1;
+   }
+  return false;
+}
+
+(!)
+Điều kiến thuật toán: mảng phải được sắp xếp sẵn theo thứ tự tăng hoặc giảm
+Độ phức tạp O(logn)
+
+có thể sử dụng đệ quy để cài đặt thuật toán!

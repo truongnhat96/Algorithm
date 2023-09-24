@@ -1,0 +1,15 @@
+<algorthim>
+bool linear_search(int x[],int y,int z){
+  for(int i=0;i<y;i++){
+     if(x[i]==z){
+     return true;
+    }
+   return false;
+}
+
+// 8 1
+// 2 3 4 1 4 9 8 9
+1 là phần tử cần tìm kiếm trong mảng có 8 phần tử
+có thể tìm kiếm vị trí,phần tử xuất hiên đầu tiên...vv 
+
+Độ phức tạp O(n)
