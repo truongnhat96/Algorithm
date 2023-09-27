@@ -1,0 +1,22 @@
+// đếm số ký tự xuất hiện nhiều nhất -sử dụng ctdl map
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+   string n;
+   getline(cin,n);
+   map<char,int> m;
+    for(char s : n){
+      m[s]++;
+    }
+    int max=0;
+    char maxkt;
+     for(auto it : m){
+         if(it.second > max){
+            max=it.second;
+            maxkt=it.first;
+         }
+     }
+     cout << maxkt << endl;
+    system("pause");
+}

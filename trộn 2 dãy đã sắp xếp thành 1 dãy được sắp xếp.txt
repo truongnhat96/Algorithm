@@ -1,0 +1,131 @@
+//trộn 2 dãy đã sắp xếp thành 1 dãy được sắp xếp
+// có thể dùng qsort
+// cách thông thường: tạo 1 mảng lưu các phần tử của cả 2 mảng 
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n,m;
+    cin >> n >> m;
+    int p[n],a[m];
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+    for(int i=0;i<m;i++){
+        cin >> a[i];
+    }
+    int j=0,i=0,g=0,cnt[n+m];
+        while(j<m && i<n){
+            if(p[i]<=a[j]){
+              cnt[g++]=p[i]; 
+             i++; // tăng chỉ số mảng p để tiếp tục so sánh
+            }else{
+                cnt[g++]=a[j];
+                j++; // tăng chỉ số mảng a để tiếp tục so sánh
+            }
+        }
+        while(i<n){
+            cnt[g++]=p[i];
+            i++;
+        }
+        while(j<m){
+            cnt[g++]=a[j];
+            j++;
+        }
+        for(int i=0;i<g;i++){
+            cout << cnt[i] << " ";
+        }
+        system("pause");  
+}
+
+
+**
+//tìm hợp và giao của 2 mảng đã sắp xếp
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n,m;
+    cin >> n >> m;
+    int p[n],a[m];
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+    for(int i=0;i<m;i++){
+        cin >> a[i];
+    }
+    //tạo 2 mảng giao và mảng hợp để lưu phần tử giao và hợp của 2 mảng p,a
+    int j=0,i=0,g=0,giao[min(n,m)],k=0,hop[n+m];
+        while(j<m && i<n){
+            if(p[i]<a[j]){
+              hop[g++]=p[i];
+             i++; 
+            }else if(p[i]==a[j]){
+                hop[g++]=p[i];
+                giao[k++]=p[i];
+                i++; 
+                j++;
+            }else{
+                hop[g++]=a[j];
+                j++;
+            }
+        }
+     while(i<n){
+        hop[g++]=p[i++];
+     }
+     while(j<m){
+        hop[g++]=a[j++];
+     }
+    for(int i=0;i<g;i++){
+        cout << hop[i] << " ";
+    }
+    cout << "\n";
+    for(int i=0;i<k;i++){
+        cout << giao[i] << " ";
+    }
+        system("pause");  
+}
+
+
+
+// sử dụng mảng đếm nếu các phần tử cho trước trong mảng chưa dc sắp xếp
+// (các phần tử trong mảng khác nhau đôi 1)
+
+#include <iostream>
+using namespace std;
+int cnt[1000001]={0};
+int main(){
+   int n,m;
+   cin >> n >> m;
+   int p[n],a[m];
+   int maxpt=-1e9,minpt=1e9;
+   for(int i=0;i<n;i++) cin >> p[i];
+   for(int i=0;i<m;i++) cin >> a[i];
+   for(int i=0;i<n;i++){
+          cnt[p[i]]++;
+          maxpt=max(maxpt,p[i]);
+          minpt=min(minpt,p[i]);
+   }
+   for(int i=0;i<m;i++){
+    cnt[a[i]]++;
+    maxpt=max(a[i],maxpt);
+    minpt=min(minpt,a[i]);
+   }
+   for(int i=minpt;i<=maxpt;i++){
+           if(cnt[i])
+           cout << i << " ";
+   }
+   cout << endl;
+   for(int i=minpt;i<=maxpt;i++){
+    if(cnt[i]==2)
+    cout << i << " ";
+   }
+   system("pause");
+}
+
+/*  (!) LƯU Ý
+nếu các phần tử trong mảng không khác nhau đôi một:
++) có thể cho cnt[p[i]]=-1
++) tiếp theo kiểm tra nếu cnt[a[i]]==-1 thì cho nó bằng 2, nếu không thì cho bằng 1 
++)  kiểm tra nếu các phần tử trong mảng cnt đều khác 0 thì in ra
+ */

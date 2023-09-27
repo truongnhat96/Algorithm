@@ -1,0 +1,64 @@
+//tìm dãy con k phần tử liên tiếp có tổng các phần tử lớn nhất
+//cách 1:
+
+/* #include <iostream>
+using namespace std;
+int main(){
+    int n,k;
+    cin >> n >> k;
+    int p[n];
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+    int max=-1e9-1,index;
+    for(int i=0;i<=n-k;i++){
+        int cnt=0;
+           for(int j=0;j<k;j++){
+            cnt+=p[i+j];
+           } 
+        if(cnt>=max){
+            max=cnt;
+            index=i;
+        }     
+    }
+    cout << max << endl;
+    for(int i=0;i<k;i++){
+        cout << p[i+index] << " ";
+    }
+    system("pause");
+} */
+
+
+// cách 2:  kỹ thuật cửa số trượt
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n,k;
+    cin >> n >> k;
+    int p[n];
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+    //coi tổng của 1 dãy con là 1 cửa sổ
+    int max=-1e9-1,index=0,tong=0;
+    //tính k phần tử đầu tiên -> chính là tính cửa sổ đầu tiên
+  for(int i=0;i<k;i++){
+         tong+=p[i];
+  }
+  max=tong;
+  //chỉ duyệt mảng đến phần tử thứ n-k
+  for(int i=1;i<=n-k;i++){
+    //tính cửa sổ mới,loại bỏ phần tử đầu của cửa sổ, cộng thêm phần tử tiếp theo 
+    tong=tong - p[i-1] + p[i+k-1];
+    if(tong>=max){
+       max=tong;
+       index=i;
+      }
+  }
+    cout << max << endl;
+    for(int i=0;i<k;i++){
+        cout << p[i+index] << " ";
+    }
+    system("pause");
+}

@@ -1,0 +1,19 @@
+//thuật toán kadane: cộng các phần tử trong mảng rồi so sánh tìm tổng dãy liên tiếp lớn nhất
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    int p[n];
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+    long long sum=0,max=0;
+    for(int i=0;i<n;i++){
+        sum+=p[i];
+        if(sum<0) sum=0;
+        else if(sum>max) max=sum;
+    }
+    cout << max << endl;
+    system("pause");
+}
