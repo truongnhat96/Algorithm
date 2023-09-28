@@ -1,0 +1,28 @@
+int a[1000];
+int main(){
+	int n;
+	cin >> n;
+	int p[n];
+
+//cho m lưu với giá trị cực nhỏ mà kiểu dữ liệu int có thể lưu dc
+	int m=INT_MIN;
+	for(int i=0;i<n;i++){
+		cin >> p[i];
+		a[p[i]]++;  //đếm tần suất xuất hiện cúa các phần tử trong mảng,lưu vào 1 mảng phụ
+
+             //tìm giá trị lớn nhất trong mảng
+		m=max(m,p[i]);
+	}
+	for(int i=0;i<=m;i++){
+//duyệt mảng phụ đến phần tử lớn nhất trong mảng chính
+//kiểm tra nếu có phần tử trong mảng chính thì in ra phần tử đó = cách duyệt đến tần suất của nó trong mảng
+		if(a[i]!=0){
+			for(int j=0;j<a[i];j++){
+				cout << i << " ";
+			}
+		}
+	}
+}
+
+ĐỘ PHỨC TẠP O(n+max).  max là giá trị lớn nhất trong mảng
+Điều kiện áp dụng thuật toán 0=< x <=1e7

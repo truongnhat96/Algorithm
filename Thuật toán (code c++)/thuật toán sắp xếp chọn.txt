@@ -1,0 +1,17 @@
+void sapxep(int o[],int t){
+	for(int i=0;i<t;i++){
+		//dùng 1 biến để lưu [chỉ số phần tử] nhỏ nhất
+		int min=i;
+       //duyệt tất cả các phần tử đứng sau phần tử hiện tại và cập nhật chỉ số của phần tử nhỏ nhất
+		for(int j=i+1;j<t;j++){
+			if(o[j]<o[min]){
+			     min=j;
+			}
+		}
+// hoán đổi phần tử đầu và phần tử nhỏ nhất vừa tìm được
+		swap(o[i],o[min]);
+	}
+}
+
+ĐỘ PHỨC TẠP O(N^2)
+Muốn sắp xếp giảm dần chỉ cần tìm phần tử lớn nhất r duyệt qua

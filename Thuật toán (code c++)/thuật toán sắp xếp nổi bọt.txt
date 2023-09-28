@@ -1,0 +1,12 @@
+void sapxep(int o[],int t){
+	for(int i=0;i<t-1;i++){
+
+//so sánh, đưa các phần tử nhỏ hơn về đầu và duyệt mảng đến các phần tử đứng trước các phần tử đã dc sắp xếp sau cùng
+		for(int j=0;j<t-i-1;j++){
+			if(o[j]>o[j+1])
+			swap(o[j],o[j+1]);
+	   }
+      }
+}
+
+ĐỘ PHỨC TẠP O(n^2)

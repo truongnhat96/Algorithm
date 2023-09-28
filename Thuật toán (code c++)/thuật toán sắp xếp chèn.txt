@@ -1,0 +1,15 @@
+void sapxep(int o[],int t){
+    for(int i=1;i<t;i++){
+
+//lấy ra phần tử ở chỉ số i
+    	int x=o[i],pos=i-1;
+    	while(pos>=0 && x<o[pos]){
+//kiểm tra nếu phần tử thứ i nhỏ hơn các phần tử trước nó thì cho các phần tử trước nó vào vị trí thứ i-1
+    		o[pos+1]=o[pos];
+    		--pos;
+		}
+//chèn phần tử thứ i vào vị trí đã chọn khi kết thúc vòng lặp
+		o[pos+1]=x;
+	}
+}
+//ĐỘ PHỨC TẠP O(n^2)
