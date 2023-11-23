@@ -1,2 +1,2 @@
-# Algorithm
-Các thuật toán cơ bản
+# DSA
+Cấu trúc dữ liệu và giải thuật
